@@ -9,7 +9,7 @@ const Demo = () => {
 	});
 	const [getSummary, { error, isFetching }] = useLazyGetSummaryQuery();
 
-	const allArticles = JSON.parse(localStorage.getItem("articles")) || null;
+	const allArticles = JSON.parse(localStorage.getItem("articles")) || [];
 
 	useEffect(() => {
 		if (allArticles && allArticles.length > 0) {
@@ -76,6 +76,7 @@ const Demo = () => {
 				{/* browse url history */}
 				<div className="flex flex-col gap-1 max-h-56 overflow-y-scroll bg-gray-100">
 					{allArticles &&
+						allArticles.length &&
 						allArticles.map((item, index) => {
 							return (
 								<div
